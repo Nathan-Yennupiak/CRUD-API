@@ -1,11 +1,10 @@
 import express from "express";
-import bodyParser from "body-parser";
-import usersRoutes from './routes/users.js'
+import usersRoutes from './routes/users_routes.js'
 
 const app = express();
 const PORT = 5000;
 
-//---------------------------------------------------//
+//--------INSTEAD OF BODY PARSER-------------------------------------//
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
     //---------------------------------------------------//
