@@ -43,7 +43,7 @@ router.patch('/:id', (req, res) => {
     const { firstName, lastName, age } = req.body
     const user = users.find((user) => user.id === id)
 
-    if (firstname) {
+    if (firstName) {
         user.firstName = firstName
     }
     if (lastName) {
