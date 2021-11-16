@@ -4,7 +4,7 @@ uuidv4();
 
 const router = express.Router()
 
-const users = []
+let users = []
 
 //All routes here start with /users
 
@@ -29,5 +29,32 @@ router.get('/:id', (req, res) => {
     res.send(foundUser)
 })
 
+//rDELETE USER 
+router.delete('/:id', (req, res) => {
+    const { id } = req.params
+    users = users.filter((user) => user.id != id)
+
+    res.send(`user with id ${id} deleted from database`)
+})
+
+//UPDATE USER
+router.patch('/:id', (req, res) => {
+    const { id } = req.params
+    const { firstName, lastName, age } = req.body
+    const user = users.find((user) => user.id === id)
+
+    if (firstname) {
+        user.firstName = firstName
+    }
+    if (lastName) {
+        user.lastName = lastName
+    }
+    if (age) {
+        user.age = age
+    }
+
+    res.send(`user with the id ${id} has been updated`)
+
+})
 
 export default router;
