@@ -1,4 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
+
+let users = []
+    //---------------------Create User -------------//
 export const createUser = (req, res) => {
     const user = req.body
 
@@ -6,14 +9,19 @@ export const createUser = (req, res) => {
     res.send(`User with username: ${user.firstName} added to the database`)
 };
 
+//---------------------Get all Users-------------//
+export const getUsers = (req, res) => {
+    res.send(users)
+};
 
+//---------------------Get a single User -------------//
 export const getUser = (req, res) => {
     const { id } = req.params
     const foundUser = users.find((user) => user.id === id)
     res.send(foundUser)
 };
 
-
+//---------------------Delete a User -------------//
 export const deleteUser = (req, res) => {
     const { id } = req.params
     users = users.filter((user) => user.id != id)
@@ -21,6 +29,7 @@ export const deleteUser = (req, res) => {
     res.send(`user with id ${id} deleted from database`)
 };
 
+//---------------------Update a User -------------//
 export const updateUser = (req, res) => {
     const { id } = req.params
     const { firstName, lastName, age } = req.body
@@ -28,9 +37,11 @@ export const updateUser = (req, res) => {
 
     if (firstName) {
         user.firstName = firstName
-    } else if (lastName) {
+    }
+    if (lastName) {
         user.lastName = lastName
-    } else if (age) {
+    }
+    if (age) {
         user.age = age
     }
 

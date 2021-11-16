@@ -2,31 +2,26 @@ import express from "express";
 import { v4 as uuidv4 } from 'uuid';
 uuidv4();
 ///Import Files from Controllers
-import { createUser, getUser, updateUser, deleteUser } from "../controllers/users_controllers.js";
+import { createUser, getUsers, getUser, updateUser, deleteUser } from "../controllers/users_controllers.js";
 
 
 const router = express.Router()
 
-let users = []
-
 //All routes here start with /users
 
-//GET ALL USERS
-router.get('/', (req, res) => {
+//---Get all Users -------------//
+router.get('/', getUsers)
 
-    res.send(users)
-})
-
-//CREATE A USER
+//---Create User -------------//
 router.post("/", createUser)
 
-//GET USER WITH id
+//---Get a User-------------//
 router.get('/:id', getUser)
 
-//rDELETE USER 
+//---Delete a User -------------//
 router.delete('/:id', deleteUser)
 
-//UPDATE USER
+//---Update a User -------------//
 router.patch('/:id', updateUser)
 
 export default router;
